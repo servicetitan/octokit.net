@@ -20,6 +20,7 @@ namespace Octokit
         }
 
         public IReadOnlyList<string> Reviewers { get; set; }
+        public IReadOnlyList<string> TeamReviewers { get; set; }
 
         internal string DebuggerDisplay
         {
