@@ -9,6 +9,8 @@ namespace Octokit
         public int Number { get; protected set; }
         public Label Label { get; protected set; }
         public User RequestedReviewer { get; protected set; }
+        public string Before { get; set; }
+        public string After { get; set; }
 
         public PullRequest PullRequest { get; protected set; }
     }
