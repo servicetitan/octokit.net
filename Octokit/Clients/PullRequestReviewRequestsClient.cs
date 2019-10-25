@@ -24,12 +24,12 @@ namespace Octokit
         /// <param name="owner">The owner of the repository</param>
         /// <param name="name">The name of the repository</param>
         /// <param name="number">The pull request number</param>
-        public Task<IReadOnlyList<User>> GetAll(string owner, string name, int number)
+        public Task<UsersTeams> GetAll(string owner, string name, int number)
         {
             Ensure.ArgumentNotNullOrEmptyString(owner, nameof(owner));
             Ensure.ArgumentNotNullOrEmptyString(name, nameof(name));
 
-            return ApiConnection.GetAll<User>(ApiUrls.PullRequestReviewRequests(owner, name, number), null, AcceptHeaders.PullRequestReviewsApiPreview);
+            return ApiConnection.Get<UsersTeams>(ApiUrls.PullRequestReviewRequests(owner, name, number), null, AcceptHeaders.PullRequestReviewsApiPreview);
         }
 
         /// <summary>

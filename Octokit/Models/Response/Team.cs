@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using Octokit.Internal;
@@ -117,5 +118,11 @@ namespace Octokit
         /// </summary>
         [Parameter(Value = "closed")]
         Closed
+    }
+
+    public class UsersTeams
+    {
+        public List<User> Users { get; set; }
+        public List<Team> Teams { get; set; }
     }
 }
