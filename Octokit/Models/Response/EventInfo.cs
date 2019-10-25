@@ -11,7 +11,7 @@ namespace Octokit
     {
         public EventInfo() { }
 
-        public EventInfo(long id, string nodeId, string url, User actor, User assignee, Label label, EventInfoState @event, string commitId, DateTimeOffset createdAt)
+        public EventInfo(long id, string nodeId, string url, User actor, User assignee, Label label, EventInfoState @event, string commitId, DateTimeOffset createdAt, string requestedReviewers)
         {
             Id = id;
             NodeId = nodeId;
@@ -22,6 +22,7 @@ namespace Octokit
             Event = @event;
             CommitId = commitId;
             CreatedAt = createdAt;
+            RequestedReviewers = requestedReviewers;
         }
 
         /// <summary>
@@ -68,6 +69,8 @@ namespace Octokit
         /// Date the event occurred for the issue/pull request.
         /// </summary>
         public DateTimeOffset CreatedAt { get; protected set; }
+
+        public string RequestedReviewers { get; protected set; }
 
         internal string DebuggerDisplay
         {
