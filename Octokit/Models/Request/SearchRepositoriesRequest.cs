@@ -83,7 +83,7 @@ namespace Octokit
         public Range Size { get; set; }
 
         /// <summary>
-        /// Searches repositories based on the language they’re written in.
+        /// Searches repositories based on the language theyâ€™re written in.
         /// https://help.github.com/articles/searching-repositories#languages
         /// </summary>
         public Language? Language { get; set; }
@@ -298,7 +298,7 @@ namespace Octokit
     [DebuggerDisplay("{DebuggerDisplay,nq}")]
     public class DateRange
     {
-        public const string DateTimePattern = "yyyy-MM-dd'T'HH:mm:ss zzz";
+        public const string DateTimePattern = "yyyy-MM-dd'T'HH:mm:sszzz";
         public const string DatePattern = "yyyy-MM-dd";
 
         private readonly string query = string.Empty;
@@ -331,7 +331,7 @@ namespace Octokit
         /// Matches repositories with regards to both the <param name="from"/> and <param name="to"/> dates.
         /// </summary>
         [Obsolete("This ctor does not support the time component or timezone and will be removed in a future release. Please use the DateTimeOffset overload instead")]
-        public DateRange(DateTime from, DateTime to) 
+        public DateRange(DateTime from, DateTime to)
         {
             query = $"{from.ToString(DatePattern, CultureInfo.InvariantCulture)}..{to.ToString(DatePattern, CultureInfo.InvariantCulture)}";
         }
@@ -665,6 +665,8 @@ namespace Octokit
         JavaScript,
         Json,
         Julia,
+        [Parameter(Value = "Jupyter Notebook")]
+        JupyterNotebook,
         [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Kotlin")]
         Kotlin,
         Lasso,

@@ -751,6 +751,17 @@ namespace Octokit
         }
 
         /// <summary>
+        /// Returns the <see cref="Uri"/> for the organization memberships
+        /// </summary>
+        /// <param name="org">The name of the organization</param>
+        /// <param name="name">The name of the user</param>
+        /// <returns></returns>
+        public static Uri OrganizationMemberships(string org, string name)
+        {
+            return "orgs/{0}/memberships/{1}".FormatUri(org, name);
+        }
+
+        /// <summary>
         /// Returns the <see cref="Uri"/> for the organizations pending invitations
         /// </summary>
         /// <param name="org">The name of the organization</param>
@@ -2546,6 +2557,18 @@ namespace Octokit
         public static Uri EnterpriseMigrationUnlockRepository(string org, int id, string repo)
         {
             return "orgs/{0}/migrations/{1}/repos/{2}/lock".FormatUri(org, id, repo);
+        }
+
+        public static Uri EnterpriseManagementConsoleMaintenance(string managementConsolePassword, Uri baseAddress)
+        {
+            if (baseAddress != null
+                && baseAddress.ToString().EndsWith("/api/v3/", StringComparison.OrdinalIgnoreCase))
+            {
+                // note: leading slash here means the /api/v3/ prefix inherited from baseAddress is ignored
+                return "/setup/api/maintenance?api_key={0}".FormatUri(managementConsolePassword);
+            }
+
+            return "setup/api/maintenance?api_key={0}".FormatUri(managementConsolePassword);
         }
 
         public static Uri EnterpriseOrganization()
