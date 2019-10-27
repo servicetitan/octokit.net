@@ -188,6 +188,12 @@ namespace Octokit
         /// </summary>
         [Parameter(Value = "head_ref_restored")]
         HeadRefRestored,
+        
+        /// <summary>
+        /// The pull request’s branch was force pushed to. 
+        /// </summary>
+        [Parameter(Value = "head_ref_force_pushed")]
+        HeadRefForcePushed,
 
         /// <summary>
         /// The actor dismissed a review from the pull request.
@@ -299,6 +305,12 @@ namespace Octokit
         /// An issue comment was deleted.
         /// </summary>
         [Parameter(Value = "comment_deleted")]
-        CommentDeleted
+        CommentDeleted,
+        
+        /// <summary>
+        /// An issue was transferred.
+        /// </summary>
+        [Parameter(Value = "transferred")]
+        Transferred
     }
 }

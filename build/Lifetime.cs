@@ -15,6 +15,7 @@ public class Lifetime : FrostingLifetime<Context>
         context.CoreOnly = context.Argument("CoreOnly", !context.IsRunningOnWindows());
 
         context.Artifacts = "./packaging/";
+        context.CodeCoverage = "./coverage-results/";
 
         // Build system information.
         var buildSystem = context.BuildSystem();
@@ -55,17 +56,8 @@ public class Lifetime : FrostingLifetime<Context>
             new Project { Name = "Octokit.Tests.Integration", Path = "./Octokit.Tests.Integration/Octokit.Tests.Integration.csproj", IntegrationTests = true }
         };
 
-        // Install tools
-        if (context.CoreOnly)
-        {
-            context.Information("Skipping tool installation for core-only build");
-        }
-        else
-        {
-            context.Information("Installing tools...");
-            ToolInstaller.Install(context, "GitVersion.CommandLine", "3.6.2");
-            ToolInstaller.Install(context, "Octokit.CodeFormatter", "1.0.0-preview");
-        }
+        context.DotNetFormatToolPath = ToolInstaller.DotNetCoreToolInstall(context, "dotnet-format", "3.1.37601", "dotnet-format");
+        context.GitVersionToolPath = ToolInstaller.DotNetCoreToolInstall(context, "GitVersion.Tool", "5.0.0", "dotnet-gitversion");
 
         // Calculate semantic version.
         context.Version = BuildVersion.Calculate(context);
