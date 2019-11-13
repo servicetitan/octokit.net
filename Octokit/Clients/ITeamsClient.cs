@@ -25,6 +25,8 @@ namespace Octokit
             Justification = "Method makes a network request")]
         Task<Team> Get(int id);
 
+        Task<Team> Get(string org, string slug);
+
         /// <summary>
         /// Returns all <see cref="Team" />s for the current org.
         /// </summary>
