@@ -37,6 +37,12 @@ namespace Octokit
             return ApiConnection.Get<Team>(endpoint, null, AcceptHeaders.NestedTeamsPreview);
         }
 
+        public Task<Team> Get(string org, string slug)
+        {
+            var endpoint = "/orgs/{0}/teams/{1}".FormatUri(org, slug);
+            return ApiConnection.Get<Team>(endpoint, null, AcceptHeaders.NestedTeamsPreview);
+        }
+
         /// <summary>
         /// Returns all <see cref="Team" />s for the current org.
         /// </summary>
