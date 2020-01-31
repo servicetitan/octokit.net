@@ -48,8 +48,8 @@ public class PullRequestReviewRequestsClientTests
 
             var reviewRequests = await _client.GetAll(_context.RepositoryOwner, _context.RepositoryName, number);
 
-            Assert.NotNull(reviewRequests);
-            Assert.Empty(reviewRequests);
+            Assert.NotNull(reviewRequests.Users);
+            Assert.Empty(reviewRequests.Users);
         }
 
         [IntegrationTest]
@@ -70,7 +70,7 @@ public class PullRequestReviewRequestsClientTests
 
             var reviewRequests = await _client.GetAll(_context.RepositoryOwner, _context.RepositoryName, number);
 
-            Assert.Equal(_collaboratorLogins, reviewRequests.Select(rr => rr.Login));
+            Assert.Equal(_collaboratorLogins, reviewRequests.Users.Select(rr => rr.Login));
         }
 
         [IntegrationTest]
@@ -178,8 +178,8 @@ public class PullRequestReviewRequestsClientTests
             await _client.Delete(_context.RepositoryOwner, _context.RepositoryName, number, reviewRequestToCreate);
             var reviewRequestsAfterDelete = await _client.GetAll(_context.RepositoryOwner, _context.RepositoryName, number);
 
-            Assert.NotEmpty(reviewRequestsBeforeDelete);
-            Assert.Empty(reviewRequestsAfterDelete);
+            Assert.NotEmpty(reviewRequestsBeforeDelete.Users);
+            Assert.Empty(reviewRequestsAfterDelete.Users);
         }
 
         [IntegrationTest]

@@ -10,7 +10,7 @@
     <TargetFrameworks>netstandard1.1;netstandard2.0</TargetFrameworks>
     <TargetFrameworks Condition="$(CoreOnly) != '' and !$(CoreOnly)">$(TargetFrameworks);net45;net46</TargetFrameworks>
     <AssemblyName>Octokit</AssemblyName>
-    <PackageId>Octokit</PackageId>
+    <PackageId>ServiceTitan-Octokit</PackageId>
     <DebugType>embedded</DebugType>
     <RepositoryUrl>https://github.com/octokit/octokit.net</RepositoryUrl>
     <PackageProjectUrl>https://github.com/octokit/octokit.net</PackageProjectUrl>
@@ -44,12 +44,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="SourceLink.Create.GitHub" Version="2.8.3" PrivateAssets="all" />
-    <DotNetCliToolReference Include="dotnet-sourcelink-git" Version="2.8.2" />
-    <DotNetCliToolReference Include="dotnet-sourcelink" Version="2.8.2" />
   </ItemGroup>
 
 </Project>
