@@ -2288,6 +2288,11 @@ namespace Octokit
             return "users/{0}".FormatUri(login);
         }
 
+        public static Uri Users()
+        {
+            return "users".FormatUri();
+        }
+
         /// <summary>
         /// Creates the relative <see cref="Uri"/> for initiating the OAuth Web login Flow
         /// </summary>

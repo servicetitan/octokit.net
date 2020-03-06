@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Octokit
@@ -60,6 +61,11 @@ namespace Octokit
             Ensure.ArgumentNotNullOrEmptyString(login, nameof(login));
 
             return ApiConnection.Get<User>(ApiUrls.User(login));
+        }
+
+        public Task<IReadOnlyList<User>> Get()
+        {
+            return ApiConnection.GetAll<User>(ApiUrls.Users());
         }
 
         /// <summary>
