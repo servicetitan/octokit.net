@@ -37,5 +37,11 @@ namespace Octokit
         public int CommentCount { get; protected set; }
 
         public Verification Verification { get; protected set; }
+
+        public IReadOnlyList<string> Added { get; protected set; }
+
+        public IReadOnlyList<string> Removed { get; protected set; }
+
+        public IReadOnlyList<string> Modified { get; protected set; }
     }
 }
