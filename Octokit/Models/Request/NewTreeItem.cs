@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using Octokit.Internal;
 
 namespace Octokit
 {
@@ -32,6 +33,7 @@ namespace Octokit
         /// <summary>
         /// The SHA for this Tree item.
         /// </summary>
+        [SerializeNull]
         public string Sha { get; set; }
 
         /// <summary>
