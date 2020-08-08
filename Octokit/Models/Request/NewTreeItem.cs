@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Octokit.Internal;
@@ -31,10 +32,9 @@ namespace Octokit
         public TreeType Type { get; set; }
 
         /// <summary>
-        /// The SHA for this Tree item.
+        /// The SHA for this Tree item. Set to a string or to a Null.Value.
         /// </summary>
-        [SerializeNull]
-        public string Sha { get; set; }
+        public object Sha { get; set; }
 
         /// <summary>
         /// Gets or sets the The content you want this file to have. GitHub will write this blob out and use that SHA 
@@ -49,5 +49,10 @@ namespace Octokit
         {
             get { return string.Format(CultureInfo.InvariantCulture, "SHA: {0}, Path: {1}, Type: {2}", Sha, Path, Type); }
         }
+    }
+
+    public static class Null
+    {
+        public static readonly object Value = new object();
     }
 }

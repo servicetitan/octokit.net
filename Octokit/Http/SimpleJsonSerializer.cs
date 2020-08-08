@@ -86,7 +86,10 @@ namespace Octokit.Internal
                     if (getter.Value != null)
                     {
                         var value = getter.Value(input);
-                        if (value == null)
+                        if (value == Null.Value) {
+                            value = null;
+                        }
+                        else if (value == null)
                         {
                             var key = type.FullName + "-" + getter.Key;
                             if (!_membersWhichShouldPublishNull.Contains(key))
