@@ -14,5 +14,23 @@ namespace Octokit
         public string After { get; set; }
 
         public PullRequest PullRequest { get; protected set; }
+        public PullRequestChanges Changes { get; protected set; }
+    }
+
+    public class PullRequestChanges
+    {
+        public PullRequestBaseChanges Base { get; set; }
+        public PullRequestValueChanges Title { get; set; }
+    }
+
+    public class PullRequestBaseChanges
+    {
+        public PullRequestValueChanges Ref { get; set; }
+        public PullRequestValueChanges Sha { get; set; }
+    }
+
+    public class PullRequestValueChanges
+    {
+        public string From { get; set; }
     }
 }

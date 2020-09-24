@@ -781,6 +781,16 @@ namespace Octokit.Tests.Clients
                         pull_request = new
                         {
                             title = "PR Title"
+                        },
+                        changes = new
+                        {
+                            @base = new
+                            {
+                                @ref = new
+                                {
+                                    from = "master"
+                                }
+                            }
                         }
                     }
                 }
