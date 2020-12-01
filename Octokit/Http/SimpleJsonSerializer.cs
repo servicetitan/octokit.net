@@ -22,6 +22,11 @@ namespace Octokit.Internal
             return SimpleJson.DeserializeObject<T>(json, _serializationStrategy);
         }
 
+        public object Deserialize(string json, Type type)
+        {
+            return SimpleJson.DeserializeObject(json, type, _serializationStrategy);
+        }
+
         internal static string SerializeEnum(Enum value)
         {
             return _serializationStrategy.SerializeEnumHelper(value).ToString();
