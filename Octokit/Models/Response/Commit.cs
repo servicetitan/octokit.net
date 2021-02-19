@@ -43,5 +43,7 @@ namespace Octokit
         public IReadOnlyList<string> Removed { get; protected set; }
 
         public IReadOnlyList<string> Modified { get; protected set; }
+
+        public string Id { get; protected set; }
     }
 }
