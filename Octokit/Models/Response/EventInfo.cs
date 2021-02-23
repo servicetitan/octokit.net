@@ -11,7 +11,7 @@ namespace Octokit
     {
         public EventInfo() { }
 
-        public EventInfo(long id, string nodeId, string url, User actor, User assignee, Label label, EventInfoState @event, string commitId, DateTimeOffset createdAt, string requestedReviewers)
+        public EventInfo(long id, string nodeId, string url, User actor, User assignee, Label label, EventInfoState @event, string commitId, DateTimeOffset createdAt, User requestedReviewer, Team requestedTeam)
         {
             Id = id;
             NodeId = nodeId;
@@ -22,7 +22,8 @@ namespace Octokit
             Event = @event;
             CommitId = commitId;
             CreatedAt = createdAt;
-            RequestedReviewers = requestedReviewers;
+            RequestedReviewer = requestedReviewer;
+            RequestedTeam = requestedTeam;
         }
 
         /// <summary>
@@ -70,7 +71,9 @@ namespace Octokit
         /// </summary>
         public DateTimeOffset CreatedAt { get; protected set; }
 
-        public string RequestedReviewers { get; protected set; }
+        public User RequestedReviewer { get; protected set; }
+
+        public Team RequestedTeam { get; protected set; }
 
         internal string DebuggerDisplay
         {
