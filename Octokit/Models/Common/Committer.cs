@@ -73,9 +73,11 @@ namespace Octokit
         /// </value>
         public DateTimeOffset Date { get; protected set; }
 
+        public string Login { get; protected set; }
+
         internal string DebuggerDisplay
         {
-            get { return string.Format(CultureInfo.InvariantCulture, "Name: {0} Email: {1} Date: {2}", Name, Email, Date); }
+            get { return string.Format(CultureInfo.InvariantCulture, "Name: {0} Email: {1} Date: {2}", Name ?? Login, Email, Date); }
         }
     }
 }
